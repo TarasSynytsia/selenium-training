@@ -64,13 +64,16 @@ public class HomeTask1 {
         else System.out.println("OS is unsupportable");
     }
 
+
+//Safari browser still not closing after testÒ
     @Test
     public void testSafari() {
         if (os.contains("Mac OS X")){
         WebDriver driver = new SafariDriver();
         driver.get("http://google.com/ncr");
 
-        driver.quit();
+//        driver.quit();
+        driver.close();
         }
         else System.out.println("OS is unsupportable");
     }
