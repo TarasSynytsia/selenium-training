@@ -65,7 +65,7 @@ public class HomeTask1 {
     }
 
 
-//Safari browser still not closing after testÒ
+//Safari browser still not close after testÒ
     @Test
     public void testSafari() {
         if (os.contains("Mac OS X")){
