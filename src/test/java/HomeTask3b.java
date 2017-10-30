@@ -29,20 +29,15 @@ public class HomeTask3b {
     @Test
     public void clickEachElement() {
         List<WebElement> li = driver.findElements(By.xpath("//*[@id='app-']"));
-//still don't understand is not usefull approach
-// ----- driver.findElement(By.xpath("//*[@id='app-']/ul[contains(@class, 'docs')]/li[" + inLi.get(j)+ "]")).click();
-        for (int i = 0; i < li.size(); i++) {
-            WebElement we = driver.findElements(By.xpath("//*[@id='app-']")).get(i);
-            we.click();
+// i'm proud of myself as i did it f* task (even no matter tha fact i saw the hint before)
+        for (int i = 1; i <= li.size(); i++) {
+            driver.findElement(By.xpath("//*[@id='app-'][" + i + "]")).click();
             Assert.assertTrue(driver.findElement(By.cssSelector("h1")).isDisplayed());
 
             List<WebElement> inLi = driver.findElements(By.xpath("//*[@id='app-']/ul[contains(@class, 'docs')]/li"));
 
-            for (int j = 0; j < inLi.size(); j++) {
-                WebElement iWe = driver.findElements(By.xpath("//*[@id='app-']/ul[contains(@class, 'docs')]/li")).get(j);
-                iWe.click();
-//                driver.findElement(By.xpath("//*[@id='app-']/ul[contains(@class, 'docs')]/li[" + inLi.get(j)+ "]")).click();
-
+            for (int j = 1; j <= inLi.size(); j++) {
+                driver.findElement(By.xpath("//*[@id='app-']/ul[contains(@class, 'docs')]/li[" + j + "]")).click();
                 Assert.assertTrue(driver.findElement(By.cssSelector("h1")).isDisplayed());
             }
 
