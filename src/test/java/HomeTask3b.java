@@ -29,7 +29,7 @@ public class HomeTask3b {
     @Test
     public void clickEachElement() {
         List<WebElement> li = driver.findElements(By.xpath("//*[@id='app-']"));
-// i'm proud of myself as i did it f* task (even no matter tha fact i saw the hint before)
+// i'm proud of myself as i did it f* task (even no matter that fact i saw the hint before)
         for (int i = 1; i <= li.size(); i++) {
             driver.findElement(By.xpath("//*[@id='app-'][" + i + "]")).click();
             Assert.assertTrue(driver.findElement(By.cssSelector("h1")).isDisplayed());
