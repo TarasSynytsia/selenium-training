@@ -37,7 +37,7 @@ public class HomeTask3a {
         //iterate each element of list elements
         for (int i = 0; i < listElements.size(); i++) {
             //pick each list element using xapth (By element name - used from String list)
-            driver.findElement(By.xpath("//*[@id=\"app-\"]/a/span[contains(text(), '" + strLi.get(i) + "')]")).click();
+                driver.findElement(By.xpath("//*[@id='app-']/a/span[contains(text(), '" + strLi.get(i) + "')]")).click();
             // Check if 'h1' tag is present on current page
             Assert.assertTrue(driver.findElement(By.cssSelector("h1")).isDisplayed());
             //collect all sumbenu items into WebElement list
@@ -50,8 +50,8 @@ public class HomeTask3a {
 
             //pick each list element using xapth (By element name - used from String list)
             for (int j = 0; j < inStrLi.size(); j++) {
-            //pick each list element using xapth (By element name - used from String list)
-                driver.findElement(By.xpath("//*[@id=\"app-\"]/ul/li/a/span[contains(text(), '" + inStrLi.get(j) + "')]")).click();
+                //pick each list element using xapth (By element name - used from String list)
+                    driver.findElement(By.xpath("//*[@id=\"app-\"]/ul/li/a/span[contains(text(), '" + inStrLi.get(j) + "')]")).click();
             }
             // Check if 'h1' tag is present on current page
             Assert.assertTrue(driver.findElement(By.cssSelector("h1")).isDisplayed());
