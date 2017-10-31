@@ -10,8 +10,8 @@ import java.net.InetAddress;
 
 public class HomeTask3 {
 
-    static WebDriver driver;
-    String testHost;
+    private static WebDriver driver;
+    private String testHost;
 
 
     @BeforeClass
@@ -26,10 +26,10 @@ public class HomeTask3 {
     public void loginPage() {
 // This block validate if my home test source is available. If not used localhost/
         try {
-            if (InetAddress.getByName("10.0.10.15").isReachable(5000)) {
-                testHost = "http://10.0.10.15/litecart/admin/";
+            if (InetAddress.getByName("10.0.5.10").isReachable(1000)) {
+                testHost = "http://10.0.5.10/litecart/admin/";
             } else
-                testHost = "http://localhost/litecart/admin/";
+                testHost = "http://10.0.2.2/litecart/admin/";
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -50,7 +50,8 @@ public class HomeTask3 {
     public void appearance() {
 
         if (driver.findElements(By.tagName("h1")) != null) {
-            driver.findElement(By.cssSelector("#app- > a > span.fa-stack.fa-lg.icon-wrapper > i.fa.fa-adjust.fa-stack-1x.icon")).click();
+//            driver.findElement(By.cssSelector("#box-apps-menu-wrapper > #box-apps-menu > #app- > a > span.name[text='Appearence']")).click();
+            driver.findElement(By.cssSelector("#box-apps-menu-wrapper > #box-apps-menu > #app- > i.'fa fa-adjust fa-stack-1x icon'")).click();
             driver.findElement(By.cssSelector("#doc-template > a > span")).click();
             driver.findElement(By.cssSelector("#doc-logotype > a > span")).click();
             System.out.println("There is at least one h1 tag on current page!");
