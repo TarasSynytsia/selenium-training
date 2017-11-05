@@ -60,6 +60,7 @@ public class HomeTask3a {
 
     @After
     public void tearDown() {
-        driver.close();
+        driver.quit();
+        driver = null;
     }
 }
