@@ -10,10 +10,15 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.util.UUID;
 
 public class HomeTask5 {
-    private String productName = "Test Product";
+    private UUID randProdName = UUID.randomUUID();
+    private String productName = "Test_Product_"+randProdName;
     private WebDriver driver;
+    private WebDriverWait wait;
 
     @Before
     public void init() {
@@ -28,6 +33,7 @@ public class HomeTask5 {
         driver.findElement(By.cssSelector("button[name=login]")).click();
     }
 
+
     @Test
     public void addNewItem() {
 //        driver.findElement(By.xpath("//*[@id='app-'][2]")).click();
@@ -41,7 +47,7 @@ public class HomeTask5 {
         driver.findElement(By.xpath("//*[@id='tab-general']/table/tbody/tr/td/div/table/tbody/tr/td/input[@name='product_groups[]'][@value='1-3']")).click();
         driver.findElement(By.xpath("//*[@id='tab-general']/table/tbody/tr/td/table/tbody/tr/td/input[@name='quantity']")).sendKeys(Keys.DELETE + "55");
 //put “Product picture”
-        driver.findElement(By.cssSelector("input[type=file]")).sendKeys("/Users/taras/Downloads/download.jpeg");
+        driver.findElement(By.cssSelector("input[type=file]")).sendKeys("/Users/taras/Projects/selenium-training/src/test/java/download.jpeg");
         driver.findElement(By.xpath("//*[@id='tab-general']/table/tbody/tr/td/input[@name='date_valid_from']")).sendKeys("01012018");
         driver.findElement(By.xpath("//*[@id='tab-general']/table/tbody/tr/td/input[@name='date_valid_to']")).sendKeys("02032019");
 
@@ -55,10 +61,11 @@ public class HomeTask5 {
         dropdown.selectByVisibleText("Euros");
 
         driver.findElement(By.xpath("//*[@id='tab-prices']/table/tbody/tr/td/input[@name='gross_prices[USD]']")).sendKeys(Keys.DELETE, Keys.DELETE, Keys.DELETE, Keys.DELETE + "21.06");
-        driver.findElement(By.xpath("//*[@id='tab-prices']/table/tbody/tr/td/input[@name='gross_prices[EUR]']")).sendKeys(Keys.DELETE + "18");
+        driver.findElement(By.xpath("//*[@id='tab-prices']/table/tbody/tr/td/input[@name='gross_prices[EUR]']")).sendKeys(Keys.ARROW_RIGHT, Keys.BACK_SPACE + "18");
 
 
         driver.findElement(By.xpath("//*[@id='content']/form/p/span/button[contains(text(), 'Save')]")).click();
+//        wait.until()
 
 
 //Verify that new product appeared in catalog (on admin page)
