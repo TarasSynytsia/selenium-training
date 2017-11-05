@@ -30,31 +30,32 @@ public class HomeTask5 {
 
     @Test
     public void addNewItem() {
-        driver.findElement(By.xpath("//*[@id='app-'][2]")).click();
-//        driver.findElement(By.xpath("//*[@id='app-']/a/span[contains(text(), 'Catalog')]")).click();
+//        driver.findElement(By.xpath("//*[@id='app-'][2]")).click();
+        driver.findElement(By.xpath("//*[@id='app-']/a/span[contains(text(), 'Catalog')]")).click();
 
-        driver.findElement(By.xpath("//*[@id='content']/div/a[contains(text(), ' Add New Product')]")).click();
+        driver.findElement(By.xpath("//a[@class='button'][contains(text(), ' Add New Product')]")).click();
 //General tab filling
-        driver.findElement(By.xpath("//*[@id='tab-general']/table/tbody/tr[1]/td/label[1]/input")).click();
-        driver.findElement(By.xpath("//*[@id='tab-general']/table/tbody/tr[2]/td/span/input")).sendKeys(productName);
-        driver.findElement(By.xpath("//*[@id='tab-general']/table/tbody/tr[3]/td/input")).sendKeys("TestCode");
-        driver.findElement(By.xpath("//*[@id='tab-general']/table/tbody/tr[7]/td/div/table/tbody/tr[4]/td[1]/input")).click();
-        driver.findElement(By.xpath("//*[@id='tab-general']/table/tbody/tr[8]/td/table/tbody/tr/td[1]/input")).sendKeys(Keys.DELETE + "55");
+        driver.findElement(By.xpath("//*[@id='tab-general']/table/tbody/tr/td/label[1]/input")).click();
+        driver.findElement(By.xpath("//*[@id='tab-general']/table/tbody/tr/td/span/input")).sendKeys(productName);
+        driver.findElement(By.xpath("//*[@id='tab-general']/table/tbody/tr/td/input[@name='code']")).sendKeys("TestCode");
+        driver.findElement(By.xpath("//*[@id='tab-general']/table/tbody/tr/td/div/table/tbody/tr/td/input[@name='product_groups[]'][@value='1-3']")).click();
+        driver.findElement(By.xpath("//*[@id='tab-general']/table/tbody/tr/td/table/tbody/tr/td/input[@name='quantity']")).sendKeys(Keys.DELETE + "55");
 //put “Product picture”
         driver.findElement(By.cssSelector("input[type=file]")).sendKeys("/Users/taras/Downloads/download.jpeg");
-        driver.findElement(By.xpath("//*[@id='tab-general']/table/tbody/tr[10]/td/input")).sendKeys("01012018");
-        driver.findElement(By.xpath("//*[@id='tab-general']/table/tbody/tr[11]/td/input")).sendKeys("02032019");
+        driver.findElement(By.xpath("//*[@id='tab-general']/table/tbody/tr/td/input[@name='date_valid_from']")).sendKeys("01012018");
+        driver.findElement(By.xpath("//*[@id='tab-general']/table/tbody/tr/td/input[@name='date_valid_to']")).sendKeys("02032019");
 
 
-//Prices tab filling
-
+//open tab "Prices"
         driver.findElement(By.xpath("//*[@id='content']/form/div/ul/li/a[contains(text(), 'Prices')]")).click();
-        driver.findElement(By.xpath("//*[@id='tab-prices']/table[1]/tbody/tr/td/input")).sendKeys(Keys.DELETE + "15");
-        Select dropdown = new Select(driver.findElement(By.xpath("//*[@id='tab-prices']/table[1]/tbody/tr/td/select")));
+
+//filling "Prices" tab
+        driver.findElement(By.xpath("//*[@id='tab-prices']/table/tbody/tr/td/input[@name='purchase_price']")).sendKeys(Keys.DELETE + "15");
+        Select dropdown = new Select(driver.findElement(By.xpath("//*[@id='tab-prices']/table/tbody/tr/td/select[@name='purchase_price_currency_code']")));
         dropdown.selectByVisibleText("Euros");
 
-        driver.findElement(By.xpath("//*[@id='tab-prices']/table[3]/tbody/tr[2]/td[2]/input")).sendKeys(Keys.DELETE, Keys.DELETE, Keys.DELETE, Keys.DELETE + "21.06");
-        driver.findElement(By.xpath("//*[@id='tab-prices']/table[3]/tbody/tr[3]/td[2]/input")).sendKeys(Keys.DELETE + "18");
+        driver.findElement(By.xpath("//*[@id='tab-prices']/table/tbody/tr/td/input[@name='gross_prices[USD]']")).sendKeys(Keys.DELETE, Keys.DELETE, Keys.DELETE, Keys.DELETE + "21.06");
+        driver.findElement(By.xpath("//*[@id='tab-prices']/table/tbody/tr/td/input[@name='gross_prices[EUR]']")).sendKeys(Keys.DELETE + "18");
 
 
         driver.findElement(By.xpath("//*[@id='content']/form/p/span/button[contains(text(), 'Save')]")).click();
