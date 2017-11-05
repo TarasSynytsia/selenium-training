@@ -92,7 +92,7 @@ public class HomeTask4 {
 
     @After
     public void tearDown() {
-        driver.close();
+        driver.quit();
         driver = null;
     }
 
