@@ -270,5 +270,6 @@ public class HomeTask3 {
     @AfterClass
     public static void stop() {
         driver.quit();
+        driver = null;
     }
 }
