@@ -1,4 +1,5 @@
 import io.github.bonigarcia.wdm.ChromeDriverManager;
+import io.github.bonigarcia.wdm.FirefoxDriverManager;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -7,6 +8,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 
 public class HomeTask5 {
@@ -17,6 +19,8 @@ public class HomeTask5 {
     public void init() {
         ChromeDriverManager.getInstance().setup();
         driver = new ChromeDriver();
+//        FirefoxDriverManager.getInstance().setup();
+//        driver = new FirefoxDriver();
         driver.get("http://10.0.5.10/litecart/admin");
 
         driver.findElement(By.cssSelector("input[name=username]")).sendKeys("admin");
@@ -36,6 +40,8 @@ public class HomeTask5 {
         driver.findElement(By.xpath("//*[@id='tab-general']/table/tbody/tr[3]/td/input")).sendKeys("TestCode");
         driver.findElement(By.xpath("//*[@id='tab-general']/table/tbody/tr[7]/td/div/table/tbody/tr[4]/td[1]/input")).click();
         driver.findElement(By.xpath("//*[@id='tab-general']/table/tbody/tr[8]/td/table/tbody/tr/td[1]/input")).sendKeys(Keys.DELETE + "55");
+//put “Product picture”
+        driver.findElement(By.cssSelector("input[type=file]")).sendKeys("/Users/taras/Downloads/download.jpeg");
         driver.findElement(By.xpath("//*[@id='tab-general']/table/tbody/tr[10]/td/input")).sendKeys("01012018");
         driver.findElement(By.xpath("//*[@id='tab-general']/table/tbody/tr[11]/td/input")).sendKeys("02032019");
 
