@@ -16,7 +16,7 @@ import java.util.UUID;
 
 public class HomeTask5 {
     private UUID randProdName = UUID.randomUUID();
-    private String productName = "Test_Product_"+randProdName;
+    private String productName = "Test_Product_" + randProdName;
     private WebDriver driver;
     private WebDriverWait wait;
 
@@ -47,7 +47,11 @@ public class HomeTask5 {
         driver.findElement(By.xpath("//*[@id='tab-general']/table/tbody/tr/td/div/table/tbody/tr/td/input[@name='product_groups[]'][@value='1-3']")).click();
         driver.findElement(By.xpath("//*[@id='tab-general']/table/tbody/tr/td/table/tbody/tr/td/input[@name='quantity']")).sendKeys(Keys.DELETE + "55");
 //put “Product picture”
-        driver.findElement(By.cssSelector("input[type=file]")).sendKeys("/Users/taras/Projects/selenium-training/src/test/java/download.jpeg");
+        if (System.getProperty("os.name").contains("Windows")) {
+            driver.findElement(By.cssSelector("input[type=file]")).sendKeys("D:\\Projects\\selenium\\src\\test\\java\\download.jpeg");
+        } else if (System.getProperty("os.name").contains("Mac")) {
+            driver.findElement(By.cssSelector("input[type=file]")).sendKeys("/Users/taras/Projects/selenium-training/src/test/java/download.jpeg");
+        }
         driver.findElement(By.xpath("//*[@id='tab-general']/table/tbody/tr/td/input[@name='date_valid_from']")).sendKeys("01012018");
         driver.findElement(By.xpath("//*[@id='tab-general']/table/tbody/tr/td/input[@name='date_valid_to']")).sendKeys("02032019");
 
