@@ -69,6 +69,7 @@ public class HomeTask5 {
 
 
 //Verify that new product appeared in catalog (on admin page)
+        //stil have no good solution, so it not finished....
         Assert.assertTrue(driver.findElement(By.xpath("//*[@id='content']/form/table/tbody/tr/td/a[contains(text(), '" + productName + "')]")).getText().equals(productName));
 
     }
