@@ -3,6 +3,7 @@ package multilayered.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
@@ -27,6 +28,9 @@ public class MainPage extends Page {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#rslides1_s0 > a > img")));
     }
 
+    @FindBy(css = "span.quantity")
+    private WebElement ducksQuantity;
+
 
     public void mainPageOperations() {
 
@@ -35,9 +39,10 @@ public class MainPage extends Page {
 
 
 //      Get quantity of product element already added products before initial adding procedure
-        beforeAddQuantity = Integer.parseInt(driver.findElement(By.cssSelector("span.quantity")).getAttribute("textContent"));
+//        beforeAddQuantity = Integer.parseInt(driver.findElement(By.cssSelector("span.quantity")).getAttribute("textContent"));
+        beforeAddQuantity = Integer.parseInt(ducksQuantity.getAttribute("textContent"));
 
-//      Pick the ducks quant to add the same quant to the cart
+//      Pick the ducks quantity to add the same quantity to the cart
         for (int i = 1; i <= listOfDucks.size(); i++) {
 
 //      Open first product from the list
@@ -46,6 +51,7 @@ public class MainPage extends Page {
             productPage.productPage();
         }
 //      Get quantity of product element on main page after adding procedure
-        afterAddQuantity = Integer.parseInt(driver.findElement(By.cssSelector("span.quantity")).getAttribute("textContent"));
+//        afterAddQuantity = Integer.parseInt(driver.findElement(By.cssSelector("span.quantity")).getAttribute("textContent"));
+        afterAddQuantity = Integer.parseInt(ducksQuantity.getAttribute("textContent"));
     }
 }

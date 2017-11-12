@@ -10,11 +10,11 @@ public class testCartOperation extends testBase {
         app.openMainPage();
         app.mainPageOperations();
 
-//      Assert that product elements were added
+//      Verify that product elements were added
         Assert.assertTrue(app.quantityIsBigger());
         app.cartOperations();
 
-//      Verify that product element were removed
+//      Verify that product elements were removed
         Assert.assertTrue(app.noElementAfterRemoving());
     }
 
